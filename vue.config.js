@@ -5,9 +5,19 @@ function resolve(dir) {
 }
 
 module.exports = {
+  // warnings are only logged to the terminal and does not fail the compilation.
   lintOnSave: true,
-  publicPath: '/',
+  /* 
+  example: 
+  - root domain http://www.cucaishop.com/, here publicPath is '/' end domain 
+  - http://www.cucaishop.com/home/ set publicPath to 'my-app'
+  */
+  publicPath: '/',  
+  //The directory where the production build files will be generated
   outputDir: 'build',
+  /*
+  'pages' build app in multi-page mode
+  */
   assetsDir: 'assets',
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
