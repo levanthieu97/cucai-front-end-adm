@@ -5,14 +5,15 @@
 yarn install
 ```
 
+## Install and build source
+```
+yarn && yarn build
+```
+
+
 ### Compiles and hot-reloads for development
 ```
 yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
 ```
 
 ### Run your tests
