@@ -12,14 +12,16 @@ module.exports = {
   - root domain http://www.cucaishop.com/, here publicPath is '/' end domain 
   - http://www.cucaishop.com/home/ set publicPath to 'my-app'
   */
-  publicPath: '/',  
+  publicPath: '/',
   //The directory where the production build files will be generated
   outputDir: 'build',
   /*
   'pages' build app in multi-page mode
   */
+  //A directory (relative to outputDir) to nest generated static assets (js, css, img, fonts) under.
   assetsDir: 'assets',
   runtimeCompiler: undefined,
+  //Setting this to false can speed up production builds if you don't need source maps for production.
   productionSourceMap: undefined,
   parallel: undefined,
   css: undefined,
@@ -37,6 +39,6 @@ module.exports = {
         fonts: resolve('src/assets/fonts'),
         images: resolve('src/assets/images')
       }
-    }
+    },
   }
 };
