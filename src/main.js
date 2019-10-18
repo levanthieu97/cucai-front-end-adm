@@ -3,11 +3,10 @@ import App from './App';
 import router from './router';
 import store from './store';
 import Vuetify from 'vuetify/lib';
-import 'vuetify/dist/vuetify.min.css'
 
-Vue.config.productionTip = false;
+Vue.use(Vuetify);
 
-const opts = {
+const theme = {
   theme: {
     dark: false,
     themes: {
@@ -33,12 +32,13 @@ const opts = {
     iconfont: 'md', // default is 'mdi'
   },
 }
-Vue.use(Vuetify);
+
+Vue.config.productionTip = false;
 
 
 new Vue({
   router,
   store,
-  vuetify: new Vuetify(opts),
+  vuetify: new Vuetify(theme),
   render: h => h(App)
 }).$mount('#app')
