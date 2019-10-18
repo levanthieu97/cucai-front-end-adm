@@ -5026,16 +5026,7 @@ loader-utils@^0.2.16:
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.0:
-  version "1.2.3"
-  resolved "https://registry.npm.taobao.org/loader-utils/download/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
-  integrity sha1-H/XcaRHJ8KBiUxpMBLYJQGEIwsc=
-  dependencies:
-    big.js "^5.2.2"
-    emojis-list "^2.0.0"
-    json5 "^1.0.1"
-
-loader-utils@^1.2.3:
+loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.0, loader-utils@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
   integrity sha512-fkpz8ejdnEMG3s37wGL07iSBDg99O9D5yflE9RGNH3hRdx9SOwYfnGYdZOUIZitN8E+E2vkq3MUMYMvPYl5ZZA==
@@ -8353,6 +8344,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha1-vXbWojMj4sqP+hICjcBFWcdfkBk=
 
+vue-api@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/vue-api/-/vue-api-0.0.3.tgz#78069558744716287e3fdb61a6e37331610ac817"
+  integrity sha1-eAaVWHRHFih+P9thpuNzMWEKyBc=
+
 vue-cli-plugin-vuetify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/vue-cli-plugin-vuetify/download/vue-cli-plugin-vuetify-1.0.0.tgz#fbbaa1322a4f8d782a297c4a5d624f6a40eef823"
@@ -8383,6 +8379,11 @@ vue-eslint-parser@^5.0.0:
     espree "^4.1.0"
     esquery "^1.0.1"
     lodash "^4.17.11"
+
+vue-gapi@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/vue-gapi/-/vue-gapi-0.0.10.tgz#aebd8f1c286e444c0ddbff4d192dadc20fbb4aff"
+  integrity sha512-4q2pQnwPo49GLANacgE2G5KQX+d/Kw9Sc9L1FkXG3PjuUEVlPEVpjvol+gjMOxQGrfM17+7SYpugv36CtQXKiA==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

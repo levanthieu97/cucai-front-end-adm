@@ -23,6 +23,11 @@
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import 'vuetify/dist/vuetify.min.css'
+
+import 'assets/css/global.css';
+import 'assets/css/custom.css';
+import 'assets/scss/style.scss';
 
 export default {
   name: 'App',
