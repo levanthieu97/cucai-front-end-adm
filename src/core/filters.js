@@ -48,7 +48,7 @@ let filters = {
         if(_.isNil(value)) return '';
         return _.toUpper(value);
     }
-},
+};
 
 export default {
     filters,
