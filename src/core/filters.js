@@ -52,7 +52,6 @@ let filters = {
 
 export default {
     filters,
-
     install(Vue){
         let keys = Object.keys(filters);
         keys.forEach(name => Vue.filter(name, filters[name]));

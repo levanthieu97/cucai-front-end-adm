@@ -1,10 +1,19 @@
 import Vue from 'vue';
+import Vuetify from 'vuetify/lib';
+import VeeValidate from 'vee-validate';
+
 import App from './App';
 import router from './router';
 import store from './store';
-import Vuetify from 'vuetify/lib';
+import Filters from 'core/filters';
+import 'core/mixins';
+import './components/commons';
+import 'material-design-icons-iconfont/dist/fonts/material-design-icons.css';
+import {Checker, DateFormat, Alert, Notify } from 'utilities';
 
+Vue.use(Filters);
 Vue.use(Vuetify);
+Vue.use(VeeValidate, { fieldsBagName: 'formFields'})
 
 const theme = {
   theme: {
@@ -34,6 +43,10 @@ const theme = {
 }
 
 Vue.config.productionTip = false;
+
+Vue.prototype.$checker = Checker;
+Vue.prototype.$notify = Notify;
+Vue.prototype.$alert = Alert;
 
 
 new Vue({
