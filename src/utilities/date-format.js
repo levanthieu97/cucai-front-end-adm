@@ -1,5 +1,3 @@
-import { isDate } from "moment";
-
 const REGEX_DDMMYYYY_DASH = new RegExp(
     /^((0)\d{1}|[1-9]{1}|(1|2)\d{1}|(3)[0-1]{1})-((0)\d{1}|[1-9]{1}|(1)[0-2]{1})-((19|20)\d{2})$/,
     ''

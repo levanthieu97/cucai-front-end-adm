@@ -6,4 +6,4 @@ export const ROLE = 'ROLE';
 export const TABLE_PAGE_SIZE_1 = [10,20,50];
 export const TABLE_PAGE_SIZE_2 = [5,6,7,8,9,10];
 
-export const DATE_FORMAT = 'DD/MM/YYYY hh:mm:ss A';
+export const STD_DATE_FORMAT = 'DD/MM/YYYY hh:mm:ss A';

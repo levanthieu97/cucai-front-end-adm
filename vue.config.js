@@ -37,7 +37,8 @@ module.exports = {
         locales: resolve('src/locales'),
         assets: resolve('src/assets'),
         fonts: resolve('src/assets/fonts'),
-        images: resolve('src/assets/images')
+        images: resolve('src/assets/images'),
+        utilities: resolve('src/utilities')
       }
     },
   }
