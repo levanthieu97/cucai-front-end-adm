@@ -22,7 +22,6 @@ const DEFAULT_ROUTES = [
     {
         path: '/403',
         meta: {
-            code: 403,
             title: 'Access Denied'
         },
         name: 'AccessDenied',
@@ -31,7 +30,6 @@ const DEFAULT_ROUTES = [
     {
         path: '/404',
         meta: {
-            code: 404,
             title: 'Not Found'
         },
         name: 'NotFound',
@@ -40,7 +38,6 @@ const DEFAULT_ROUTES = [
     {
         path: '/500',
         meta:{
-            code: 500,
             title: 'Internal Error Server'
         },
         name: 'ServerError',
@@ -55,8 +52,7 @@ const DEFAULT_ROUTES = [
     {
         path:'/dashboard',
         meta:{
-            title: 'Củ Cải Store',
-            requireAuth: true
+            requiresAuth: true,
         },
         name: 'DashBoard',
         component: () => import('modules/dashboard')
@@ -79,4 +75,6 @@ const DEFAULT_ROUTES = [
     }
 ];
 
-export default [...DEFAULT_ROUTES]
+const routes = [...DEFAULT_ROUTES];
+
+export default routes;

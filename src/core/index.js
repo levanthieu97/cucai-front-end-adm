@@ -2,14 +2,14 @@ import _ from 'lodash';
 import axios from 'axios';
 import store from 'store';
 import router from 'router';
-import { ACCESS_TOKEN_KEY } from './constant';
+import {    } from './constant';
 import { APIMethods } from './api-method';
 
 const retrieveServerIp = () => {
     let serverIp = process.env.VUE_APP_SERVER_BASE_IP;
     let serverPort = process.env.VUE_APP_SERVER_BASE_PORT;
-    if(process.env.NODE_ENV == 'development' && serverPort){
-        if(serverIp) return `${location.protocol}//${serverIp}:${serverPort}/`;
+    if (process.env.NODE_ENV == 'development' && serverPort) {
+        if (serverIp) return `${location.protocol}//${serverIp}:${serverPort}/`;
         return `${location.protocol}//${location.hostname}:${serverPort}/`;
     }
     return process.env.VUE_APP_LOCATION || '/';
@@ -27,14 +27,14 @@ export const APIClient = new APIMethods(
 const REQUEST_INTERCEPTOR = {
     request: config => {
         let isLoginAPI = _.endsWith(config.url, '/login/auth');
-        if(!isLoginAPI && store.getters['authentication/isExpired']){
-            store.dispatch('authentication/logout');
+        if (!isLoginAPI && store.getters['authentication/isExpired']) {
+            store.dispatch('login/logout');
             router.push({ path: '/401' });
             return null;
         }
 
-        if(_.isNil(config.headers.common[ACCESS_TOKEN_KEY])){
-            config.headers.common[ACCESS_TOKEN_KEY] = store.getters['authentication/getAccessToken'] || '';
+        if (_.isNil(config.headers.common[AUTH_HEADER_KEY])) {
+            config.headers.common[AUTH_HEADER_KEY] = store.getters['login/getAccessToken'] || '';
         }
         return config;
     }
@@ -43,12 +43,12 @@ const REQUEST_INTERCEPTOR = {
 const RESPONSE_INTERCEPTOR = {
     error: error => {
         let response = error.response;
-        if(!_.isNil(response) && response.status == 401){
-            store.dispatch('authentication/logout');
-            router.push({ path:'/401' });
-        }else if(!_.isNil(error.message) && error.message === 'Network Error'){
+        if (!_.isNil(response) && response.status == 401) {
+            store.dispatch('login/logout');
+            router.push({ path: '/401' });
+        } else if (!_.isNil(error.message) && error.message === 'Network Error') {
             response = { status: 0 };
-        }else{
+        } else {
             response = {};
         }
         return response;
