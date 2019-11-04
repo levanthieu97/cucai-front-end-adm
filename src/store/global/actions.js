@@ -9,17 +9,11 @@ import {
     SHOW_WARNING_MSG,
     RESET_SNACKBAR
 } from './types';
-import _ from 'lodash';
-import store from 'store';
 
-export const toggleDrawer = ({ commit }, flag) => {
-    if(_.isBoolean(flag)){
-        commit(TOGGLE_APP_DRAWER,flag);
-    }else{
-        let status = store.getters['global/drawerToggled'];
-        commit(TOGGLE_APP_DRAWER,!status);
-    }
-}
+export const toggleDrawer = ({ commit }, flag = true) => {
+    commit(TOGGLE_APP_DRAWER, flag);
+  };
+  
 
 export const setLoading = ({ commit } , flag = true) => {
     commit(SET_LOADING, flag);

@@ -10,7 +10,6 @@
   "dependencies": {
     "@chidoan/excel-utils": "^2.1.2",
     "axios": "^0.19.0",
-    "core-js": "^2.6.5",
     "downloadjs": "^1.4.7",
     "loader-utils": "^1.2.3",
     "lodash": "^4.17.15",
@@ -25,6 +24,7 @@
     "vue-gapi": "^0.0.10",
     "vue-money-format": "^1.1.1",
     "vue-numeric": "^2.3.0",
+    "vue-perfect-scrollbar": "^0.2.0",
     "vue-router": "^3.0.3",
     "vuetify": "^2.1.1",
     "vuex": "^3.0.1",
@@ -47,9 +47,8 @@
     "stylus-loader": "^3.0.2",
     "vue-cli-plugin-vuetify": "^1.0.0",
     "vue-json-excel": "^0.2.98",
-    "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.2.2"
+    "vuetify-loader": "^1.3.0"
   },
   "eslintConfig": {
     "root": true,

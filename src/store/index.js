@@ -2,25 +2,20 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import _ from 'lodash';
 import global from './global';
+import login from 'modules/login/store';
+import dashboard from 'modules/dashboard/store';
+import CUCAI_STORES from './cucai-store';
 
 Vue.use(Vuex);
-const STORE_MODULE = '/store/index.js';
-const requireModule = require.context('modules',true,/\.js$/);
-const modules = {
-    global
-};
 
-requireModule.keys().forEach( filename => {
-    if(!_.endsWith(filename, STORE_MODULE)) return;
+const DEFAULT_STORES = {
+    global,
+    login,
+    dashboard
+}
 
-    let folderPath = _.replace(filename, STORE_MODULE, '');
-    if(folderPath == '') return;
-
-    let moduleName = _.camelCase(
-        _.replace(_.last(_.split(folderPath, '/')), '/','')
-    );
-    modules[moduleName] = requireModule(filename).default || requireModule(filename);
-});
+const modules = _.cloneDeep(DEFAULT_STORES);
+_.assign(modules,CUCAI_STORES);
 
 export default new Vuex.Store({
     modules,

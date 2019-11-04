@@ -1,10 +1,13 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
+import axios from 'axios';
 
 import App from './App';
 import router from './router';
 import store from './store';
 import Filters from 'core/filters';
+import { ACCESS_TOKEN_KEY, AUTH_HEADER_KEY } from 'core/constant';
+
 import 'core/mixins';
 import './components/commons';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
@@ -39,10 +42,17 @@ const theme = {
   },
 }
 
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+const token = localStorage.getItem(ACCESS_TOKEN_KEY);
+if(token){
+  axios.defaults.headers.common[AUTH_HEADER_KEY] = `${token}`;
+}
+store.dispatch('login/setExpires');
+
 Vue.config.productionTip = false;
 
 Vue.prototype.$checker = Checker;
-Vue.prototype.$notify = Notify;
+Vue.prototype.$message = Notify;
 Vue.prototype.$alert = Alert;
 
 
