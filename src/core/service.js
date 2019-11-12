@@ -27,7 +27,7 @@ export default class Service {
   constructor(namespace) {
     // Accept */*
     axios.defaults.headers.common['Accept'] = '*/*';
-    const endpoint = process.env.VUE_APP_SERVICE_ENDPOINT || '';
+    const endpoint = process.env.VUE_APP_LOCATION || '';
     const baseURL = endpoint + (namespace ? `/${namespace}/` : '/');
     this.axios = axios.create({
       baseURL,
@@ -121,7 +121,7 @@ export default class Service {
         return {
           success: false,
           data: null,
-          message: 'Must be authenticate befor accessing this API.',
+          message: 'Must be authenticate before accessing this API.',
           http_status: 401
         };
 
