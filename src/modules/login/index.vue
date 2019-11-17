@@ -12,15 +12,19 @@
                 <v-row align="center" justify="center">
                   <v-col>
                     <h2 class="text-center font-weight-regular">Đăng nhập với</h2>
-                    <div>
-                      {{linkFacebook}}
-                    </div>
                   </v-col>
                 </v-row>
               </v-card-text>
               <v-card-actions>
                 <v-row align="center" justify="center">
-                  <v-btn large color="#283593" dark class="text-capitalize" max-height="350" :href="linkFacebook">
+                  <v-btn
+                    large
+                    color="#283593"
+                    dark
+                    class="text-capitalize"
+                    max-height="350"
+                    :href="linkFacebook"
+                  >
                     <i class="fab fa-facebook mx-2" dark></i>Facebook
                   </v-btn>
                   <v-btn large class="text-capitalize" :href="linkGoogle">
@@ -56,6 +60,9 @@
               <v-card-actions>
                 <v-btn block color="primary">Đăng nhập</v-btn>
               </v-card-actions>
+              <v-card-actions class="pt-0">
+                <v-btn block color="primary">Đăng ký</v-btn>
+              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -66,10 +73,9 @@
 
 
 <script>
-import { GOOGLE_AUTH_URL,FACEBOOK_AUTH_URL } from 'core/constant';
-import _ from 'lodash';
-import {mapActions, mapState, mapGetters} from 'vuex';
-
+import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from "core/constant";
+import _ from "lodash";
+import { mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -77,17 +83,13 @@ export default {
       username: "",
       password: "",
       linkFacebook: FACEBOOK_AUTH_URL,
-      linkGoogle:GOOGLE_AUTH_URL
+      linkGoogle: GOOGLE_AUTH_URL
     };
   },
 
-  watch: {
+  watch: {},
 
-  },
-
-  methods: {
-
-  }
+  methods: {}
 };
 </script>
 
