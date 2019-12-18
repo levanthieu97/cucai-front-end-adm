@@ -89,7 +89,8 @@ export default {
 
   watch: {},
 
-  methods: {}
+  methods: {},
+
 };
 </script>
 
