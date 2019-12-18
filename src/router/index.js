@@ -13,20 +13,27 @@ const router = new Router({
   routes
 });
 
+
 router.beforeEach(async (to, from, next) => {
-  document.title = to.meta.title || 'TP Shop';
+  document.title = to.meta.title || 'Củ Cải Shop';
   NProgress.start();
   store.dispatch('global/setLoading', false);
 
   let isLoginPage = to.matched.some(p => p.path.indexOf('/login') === 0);
   let isDashboard = to.matched.some(p => p.path.indexOf('/dashboard') === 0);
+  let oauth2Redirect = to.matched.some(p => p.path.indexOf('/oauth2/redirect') ===0);
+
   try {
     let token = store.getters['login/token'];
     let isAuthenticated = store.getters['login/isAuthenticated'];
     let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    
+    console.log("*******************&&&&&");
+    console.log(oauth2Redirect);
     console.log(requiresAuth);
     console.log(isAuthenticated);
-    console.log(token);
+    to.matched.some(p => console.log(p));
+    //console.log(token);
     if (!requiresAuth) {
       if (isLoginPage && isAuthenticated) return next('/');
       return next();
@@ -46,6 +53,7 @@ router.beforeEach(async (to, from, next) => {
     next('login');
   }
 });
+
 
 /*
   `to` and `from` are both route objects

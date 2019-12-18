@@ -11,6 +11,9 @@ const DEFAULT_ROUTES = [
         }
     },
     {
+        path:'/oauth2/redirect',
+    },
+    {
         path: '/401',
         meta: {
             code: 401,
