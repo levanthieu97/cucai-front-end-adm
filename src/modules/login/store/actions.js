@@ -1,17 +1,13 @@
 import router from 'router';
 import store from 'store';
-import LoginService from 'modules/login/store/services';
-import ServiceToken from 'core/service';
+import Service from 'core/service';
 import * as TYPES from './types';
 import * as CONSTANTS from 'core/constant';
 import _ from 'lodash';
 
-const service = new LoginService();
-
 export const authSuccess = ({ commit }, token) => {
     commit(TYPES.AUTH_SUCCESS, { token });
 };
-
 
 export const setExpires = ({ commit }) => {
     const expires_at = parseInt(localStorage.getItem(CONSTANTS.EXPIRES_AT) || Date.now());
@@ -30,14 +26,14 @@ export const logout = ({ commit }) => {
     return new Promise(resolve => {
         commit(TYPES.AUTH_LOGOUT);
         localStorage.clear();
-        ServiceToken.removeToken();
+        Service.removeToken();
         router.push('/login');
         resolve()
     });
 }
 
 export const login = async ({ commit }, payload) => {
-    let resp = await service.login(payload);
+    let resp = await Service.post('/auth/sign-in', payload);
 
     if (resp != null && resp.success) {
         if (resp.data.role === "ROLE_USER") {
@@ -50,7 +46,7 @@ export const login = async ({ commit }, payload) => {
             localStorage.setItem(CONSTANTS.EXPIRES_AT, Date.now());
             localStorage.setItem(CONSTANTS.EXPIRES_IN, expired_seconds);
             localStorage.setItem(CONSTANTS.USER, JSON.stringify(resp.data.user_info));
-            ServiceToken.setToken(resp.data.token);
+            Service.setToken(resp.data.token);
 
             commit(TYPES.SET_USER, resp.data.user_info);
             commit(TYPES.USER_ROLE, resp.data.role);
@@ -61,7 +57,7 @@ export const login = async ({ commit }, payload) => {
         }
     } else {
         localStorage.clear();
-        ServiceToken.removeToken();
+        Service.removeToken();
         commit(TYPES.AUTH_ERROR, false);
         commit(
             TYPES.SET_MESSAGE,

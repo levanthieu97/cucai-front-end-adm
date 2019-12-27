@@ -2,8 +2,8 @@
   <div>
     <template v-if="$route.meta.requiresAuth">
       <v-app>
-        <nav-drawer class="app--drawer"/>
-        <toolbar/>
+        <navDrawer class="app--drawer"/>
+        <tool-bar/>
         <v-content class="content-page-wrapper">
           <div class="page-wrapper">
             <div :class="['view-header', $route.meta.title ? '' : 'hidden']">{{ $route.meta.title }}</div>
@@ -54,11 +54,6 @@ export default {
         this.resetMsg();
       }
     }
-  },
-  created() {
-    AppEvents.forEach(item => {
-      this.$on(item.name, item.callback);
-    });
   },
 
   methods: {
