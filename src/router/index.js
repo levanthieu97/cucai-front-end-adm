@@ -4,6 +4,9 @@ import store from 'store';
 import routes from './routes';
 import NProgress from 'nprogress';
 import _ from 'lodash';
+import Service from 'core/service';
+import * as CONSTANTS from 'core/constant';
+
 
 Vue.use(Router);
 
@@ -13,45 +16,64 @@ const router = new Router({
   routes
 });
 
+router.beforeEach(async (to, from, next) => {
+  let isPathSocial = to.matched.some(p => p.path.indexOf('/oauth2/redirect') === 0);
+  let { query: { token, error } } = to;
+  if (isPathSocial) {
+    localStorage.setItem(CONSTANTS.ACCESS_TOKEN_KEY, token);
+    Service.setToken(token);
+    store.dispatch('Auth/loadProfile')
+    next('/');
+  }
+  next();
+})
 
 router.beforeEach(async (to, from, next) => {
   document.title = to.meta.title || 'Củ Cải Shop';
   NProgress.start();
-  store.dispatch('global/setLoading', false);
+  // store.dispatch('global/setLoading', false);
 
-  let isLoginPage = to.matched.some(p => p.path.indexOf('/login') === 0);
-  let isDashboard = to.matched.some(p => p.path.indexOf('/dashboard') === 0);
-  let oauth2Redirect = to.matched.some(p => p.path.indexOf('/oauth2/redirect') ===0);
+  // let isLoginPage = to.matched.some(p => p.path.indexOf('/login') === 0);
+  // let isRegisTer = to.matched.some(p => p.path.indexOf('/register') === 0);
+  // let isRedirect = to.matched.some(p => p.path.indexOf('/oauth2/redirect') === 0);
+
 
   try {
-    let token = store.getters['login/token'];
-    let isAuthenticated = store.getters['login/isAuthenticated'];
-    let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    
-    console.log("*******************&&&&&");
-    console.log(oauth2Redirect);
-    console.log(requiresAuth);
-    console.log(isAuthenticated);
-    to.matched.some(p => console.log(p));
+    // let isAuthenticated = store.getters['login/isAuthenticated'];
+    // let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+    // console.log("*******************&&&&&");
+    // console.log(oauth2Redirect);
+    // console.log(requiresAuth);
+    // console.log(isAuthenticated);
+    // to.matched.some(p => console.log(p));
     //console.log(token);
-    if (!requiresAuth) {
-      if (isLoginPage && isAuthenticated) return next('/');
-      return next();
-    }
 
-    if (!isLoginPage && !requiresAuth) {
-      console.log("sadsa");
-      return next('/login');
-    }
+    // if(isRedirect){
+    //   console.log(isAuthenticated);
+    //   return next();
+    // }
 
-    if (requiresAuth && !isAuthenticated) {
-      if (isLoginPage) return next();
-      return next('/login');
-    } else next();
+    // if (!requiresAuth) {
+    //   if (isLoginPage && isAuthenticated) return next('/');
+    //   return next();
+    // }
+
+
+
+    // if (isRegisTer && !requiresAuth) {
+    //   return next('/login');
+    // }
+
+    // if (requiresAuth && !isAuthenticated) {
+    //   if (isLoginPage) return next();
+    //   return next('/login');
+    // } else next();
   } catch (err) {
     if (isLoginPage) return next();
     next('login');
   }
+  next();
 });
 
 

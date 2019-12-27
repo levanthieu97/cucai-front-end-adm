@@ -50,22 +50,3 @@ export default {
     }
 }
 </script>
-
-<style lang="stylus">
-#appDrawer {
-  overflow: hidden;
-  background-color: #222d32;
-
-  .drawer-menu--scroll {
-    height: calc(100vh - 48px);
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-}
-
-#logo {
-    filter: brightness(0) invert(1);
-    -webkit-filter: brightness(0) invert(1);
-    margin: 0 auto;
-}
-</style>

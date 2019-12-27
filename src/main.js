@@ -47,7 +47,7 @@ const token = localStorage.getItem(ACCESS_TOKEN_KEY);
 if(token){
   axios.defaults.headers.common[AUTH_HEADER_KEY] = `${token}`;
 }
-store.dispatch('login/setExpires');
+// store.dispatch('login/setExpires');
 
 Vue.config.productionTip = false;
 

@@ -4,18 +4,16 @@ import router from 'router';
 
 import { AUTH_HEADER_KEY } from 'core/constant';
 
-export default class Service {
-  static requestInterceptors;
-
-  static setToken(token) {
-    axios.defaults.headers.common[AUTH_HEADER_KEY] = `${token}`;
+class Service {
+  setToken(token) {
+    this.axios.defaults.headers.common[AUTH_HEADER_KEY] = `${token}`;
   }
 
-  static removeToken() {
-    axios.defaults.headers.common[AUTH_HEADER_KEY] = undefined;
+  removeToken() {
+    this.axios.defaults.headers.common[AUTH_HEADER_KEY] = undefined;
   }
 
-  static interceptors({ request }) {
+  interceptors({ request }) {
     if (request) this.requestInterceptors = request;
   }
 
@@ -203,3 +201,5 @@ export default class Service {
     });
   }
 }
+
+export default new Service();

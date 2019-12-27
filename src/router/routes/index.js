@@ -6,12 +6,17 @@ const DEFAULT_ROUTES = [
         meta: {
             title: 'Not Found'
         },
-        redirect:{
-            path:'/404'
+        redirect: {
+            path: '/404'
         }
     },
     {
-        path:'/oauth2/redirect',
+        path: '/oauth2/redirect',
+        meta: {
+            title: 'Redirect'
+        },
+        name: 'Redirect',
+        // component: () => import('modules/oauth2redirect')
     },
     {
         path: '/401',
@@ -40,21 +45,21 @@ const DEFAULT_ROUTES = [
     },
     {
         path: '/500',
-        meta:{
+        meta: {
             title: 'Internal Error Server'
         },
         name: 'ServerError',
         component: () => import('modules/pages/error-page')
     },
     {
-        path:'/',
+        path: '/',
         redirect: {
-            path:'/dashboard'
+            path: '/dashboard'
         }
     },
     {
-        path:'/dashboard',
-        meta:{
+        path: '/dashboard',
+        meta: {
             requiresAuth: true,
         },
         name: 'DashBoard',
