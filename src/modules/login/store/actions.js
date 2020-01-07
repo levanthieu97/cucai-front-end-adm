@@ -48,7 +48,7 @@ export const login = async ({ commit }, payload) => {
             localStorage.setItem(CONSTANTS.USER, JSON.stringify(resp.data.user_info));
             Service.setToken(resp.data.token);
 
-            commit(TYPES.SET_USER, resp.data.user_info);
+            commit(TYPES.SET_USER, resp.data.user_info); // commit gán/ thay đổi giá trị trong mutations;
             commit(TYPES.USER_ROLE, resp.data.role);
             authSuccess({ commit }, resp.data.token);
             setExpires({ commit });

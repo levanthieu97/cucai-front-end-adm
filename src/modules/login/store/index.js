@@ -27,6 +27,8 @@ const state = {
 
 const mutations = {
 
+    // we can use the ES2015 computed property name feature
+    // to use a constant as the function name. Exam SET_USER as the function name
     [SET_USER](state, user) {
         state.user = user;
     },

@@ -27,7 +27,8 @@ const theme = {
         error: '#c9302c',
         info: '#888888',
         success: '#00695c',
-        warning: '#ec971f'
+        warning: '#ec971f',
+        failure: '#FF6B6B'
       },
       dark: {
         primary: '#2196F3'
