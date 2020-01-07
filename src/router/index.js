@@ -33,14 +33,13 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start();
   // store.dispatch('global/setLoading', false);
 
-  // let isLoginPage = to.matched.some(p => p.path.indexOf('/login') === 0);
-  // let isRegisTer = to.matched.some(p => p.path.indexOf('/register') === 0);
-  // let isRedirect = to.matched.some(p => p.path.indexOf('/oauth2/redirect') === 0);
+   let isLoginPage = to.matched.some(p => p.path.indexOf('/login') === 0);
+   let isRegisTer = to.matched.some(p => p.path.indexOf('/register') === 0);
 
 
   try {
-    // let isAuthenticated = store.getters['login/isAuthenticated'];
-    // let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+     let isAuthenticated = store.getters['login/isAuthenticated'];
+     let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
     // console.log("*******************&&&&&");
     // console.log(oauth2Redirect);
@@ -54,21 +53,21 @@ router.beforeEach(async (to, from, next) => {
     //   return next();
     // }
 
-    // if (!requiresAuth) {
-    //   if (isLoginPage && isAuthenticated) return next('/');
-    //   return next();
-    // }
+    if (!requiresAuth) {
+      if (isLoginPage && isAuthenticated) return next('/');
+      return next();
+    }
 
 
 
-    // if (isRegisTer && !requiresAuth) {
-    //   return next('/login');
-    // }
+    if (isRegisTer && !requiresAuth) {
+      return next('/login');
+    }
 
-    // if (requiresAuth && !isAuthenticated) {
-    //   if (isLoginPage) return next();
-    //   return next('/login');
-    // } else next();
+    if (requiresAuth && !isAuthenticated) {
+      if (isLoginPage) return next();
+      return next('/login');
+    } else next();
   } catch (err) {
     if (isLoginPage) return next();
     next('login');

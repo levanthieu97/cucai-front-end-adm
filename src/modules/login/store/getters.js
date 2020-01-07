@@ -1,4 +1,5 @@
 import moment from 'moment';
+// getters là nơi xử lý và trả về thông qua state mà ko muốn thay đổi state
 
 export const me = state => state.user;
 export const isAuthenticated = state => !!state.token;
@@ -15,4 +16,3 @@ export const expired = state => {
 };
 export const hasLoadedOnce = state => state.hasLoadedOnce;
 export const message = state => state.message;
-
