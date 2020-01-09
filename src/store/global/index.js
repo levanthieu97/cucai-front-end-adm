@@ -30,8 +30,8 @@ const showMsg  = (state, {type, message }) => {
         show: true,
         text: message,
         color: MSG_TYPE_COLORS[type],
-    }
-}
+    };
+};
 
 const mutations = {
     [CONSTANT.TOGGLE_APP_DRAWER](state,flag){

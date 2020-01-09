@@ -10,12 +10,6 @@ import Auth from 'modules/oauth2redirect/store';
 
 Vue.use(Vuex);
 
-const DEFAULT_STORES = {
-    global,
-    login,
-    dashboard
-};
-
 export default new Vuex.Store({
     modules: { 
         global,

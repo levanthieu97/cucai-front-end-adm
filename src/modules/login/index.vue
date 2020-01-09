@@ -93,19 +93,18 @@
                 <figure>
                   <img src="~assets/images/signin-image.jpg" alt="sing up image" />
                 </figure>
-                <a href="#" class="signup-image-link">Tạo tài khoản</a>
+                <a @click="redirectRegister" class="signup-image-link">Tạo tài khoản</a>
               </div>
 
               <div class="signin-form">
-                <h2 class="form-title">Cu Cai Shop</h2>
-                <v-form id="login-form">
+                <h2 class="form-title">Củ Cải Shop</h2>
+                <v-form id="login-form" :lazy-validation="lazy" ref="formLogin">
                   <v-alert
                     :value="!hasLoadedOnce"
-                    color="failure"
+                    outlined
                     type="error"
                     elevation="2"
                     border="top"
-                    colored-border
                   >{{ message }}</v-alert>
                   <div class="form-group">
                     <v-text-field
@@ -115,7 +114,6 @@
                       prepend-icon="face"
                       :rules="emailRules"
                       type="email"
-                      required
                     ></v-text-field>
                   </div>
                   <div class="form-group">
@@ -126,6 +124,9 @@
                       prepend-icon="lock"
                       :rules="passwordRules"
                       required
+                      :append-icon="hidePassword ? 'mdi-eye' : 'mdi-eye-off'"
+                      :type="hidePassword ? 'text' : 'password'"
+                      @click:append="hidePassword = !hidePassword"
                     ></v-text-field>
                   </div>
                   <div class="form-group form-button">
@@ -170,6 +171,7 @@ import { mapActions, mapState, mapGetters } from "vuex";
 import Service from "core/service";
 import "assets/css/style.css";
 import "assets/fonts/material-icon/css/material-design-iconic-font.min.css";
+import "@mdi/font/css/materialdesignicons.css";
 
 export default {
   data() {
@@ -180,15 +182,18 @@ export default {
       linkGoogle: GOOGLE_AUTH_URL,
       isProcess: false,
       loading: false,
+      hidePassword: false,
+      checkEmail: false,
+      lazy: false,
       emailRules: [
         v => !!v || "Vui lòng nhập E-mail.",
-        v => /.+@.+/.test(v) || "Phải có ký tự '@'."
+        v => /.+@.+\..+/.test(v) || "Phải có ký tự '@'."
       ],
       passwordRules: [v => !!v || "Vui lòng nhập mật khẩu"]
     };
   },
 
-  // computed chứa getters 
+  // computed chứa getters
   // computed thay chứa các property và xử lý các property của data. property của computed được lưu trong bộ nhớ cache.
   // computed mặc định là phương thức getter. có getter và setter. computed chỉ thay đổi khi có setter hay thay đổi giá trị bên trong hàm.
   computed: {
@@ -203,7 +208,6 @@ export default {
     });
   },
 
-
   // khi bạn tác động đến property data -> xử lý hành động gì đó
   watch: {},
 
@@ -213,10 +217,13 @@ export default {
     async handleLogin() {
       this.loading = true;
       this.isProcess = true;
+      console.log(this.$refs.formLogin.validate());
       if (!this.email) {
         this.$refs.email.focus();
       } else if (!this.password) {
         this.$refs.password.focus();
+      } else if (!this.$refs.formLogin.validate()) {
+        this.$refs.email.focus();
       } else {
         await this.login({
           email: this.email,
@@ -225,6 +232,10 @@ export default {
       }
       this.loading = false;
       this.isProcess = false;
+    },
+
+    redirectRegister() {
+      this.$router.push({ path: "/register" });
     }
   }
 };

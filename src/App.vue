@@ -62,28 +62,4 @@ export default {
 };
 </script>
 
-// <style lang="scss" scoped>
-// .setting-fab {
-//   top: 50% !important;
-//   right: 0;
-//   border-radius: 0;
-// }
 
-// .page-wrapper {
-//   min-height: calc(100vh - 64px - 50px - 81px);
-//   background-color: #ecf0f5;
-// }
-
-// .view-header {
-//   font-size: 25px;
-//   width: 100%;
-//   padding: 10px 24px 0;
-//   margin: 0 0 -14px;
-// }
-
-// .view-header.hidden {
-//   height: 0 !important;
-//   padding: 0 !important;
-//   margin: 0 !important;
-// }
-// </style>
