@@ -60,6 +60,7 @@ const DEFAULT_ROUTES = [
     {
         path: '/dashboard',
         meta: {
+            title: 'Trang chủ',
             requiresAuth: true,
         },
         name: 'DashBoard',

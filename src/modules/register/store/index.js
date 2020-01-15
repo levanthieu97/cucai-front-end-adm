@@ -3,9 +3,9 @@ import * as actions from './actions';
 import * as getters from './getters';
 
 const state = {
-    signal = false,
-    register_success = false,
-    register_message = ''
+    signal : false,
+    register_success : false,
+    register_message : ''
 }
 
 const mutations = {

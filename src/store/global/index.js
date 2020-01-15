@@ -5,8 +5,7 @@ import * as actions from './actions';
 const DEFAULT_SNACKBAR = {
     show: false,
     color: '',
-    text: '',
-    date: new Date().getTime()
+    text: ''
 };  
 
 const state = {
