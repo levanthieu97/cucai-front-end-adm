@@ -1,166 +1,164 @@
 <template>
-  <v-app>
-    <v-content>
-      <!-- <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
-            <v-card class="elevation-4 pb-2">
-              <v-toolbar color="primary" dark flat>
-                <v-toolbar-title>Củ cải Store</v-toolbar-title>
-      </v-toolbar>-->
-      <!-- <v-card-text class="pa-0">
-                <v-row align="center" justify="center">
-                  <v-col>
-                    <h2 class="text-center font-weight-regular">Đăng nhập với</h2>
-                  </v-col>
-                </v-row>
-              </v-card-text>
-              <v-card-actions>
-                <v-row align="center" justify="center">
-                  <v-btn
-                    large
-                    color="#283593"
-                    dark
-                    class="text-capitalize"
-                    max-height="350"
-                    :href="linkFacebook"
-                  >
-                    <i class="fab fa-facebook mx-2" dark></i>Facebook
-                  </v-btn>
-                  <v-btn large class="text-capitalize" :href="linkGoogle">
-                    <i class="fab fa-google mx-2" dark></i>Google
-                  </v-btn>
-                </v-row>
-      </v-card-actions>-->
-      <!-- <v-row align="center" justify="center" class="my-2">
-                <i class="far fa-heart mx-1" />
-                <i class="far fa-heart mx-1" />
-                <i class="far fa-heart mx-1" />
-      </v-row>-->
-      <!-- <v-card-text class="py-0 mt-3">
-                <v-form>
-                  <v-container>
-                    <v-text-field
-                      label="Email"
-                      ref="email"
-                      v-model="email"
-                      prepend-icon="face"
-                      :rules="emailRules"
-                      type="email"
-                      required
-                    ></v-text-field>
-
-                    <v-text-field
-                      label="Mật Khẩu"
-                      ref="password"
-                      v-model="password"
-                      prepend-icon="lock"
-                      :append-icon="hidePassword ? 'visibility' : 'visibility_off'"
-                      @click:append="hidePassword = !hidePassword"
-                      class="input-group--focused"
-                      :type="hidePassword ? 'text': 'password'"
-                      :rules="passwordRules"
-                      required
-                    ></v-text-field>
-                    <v-alert
-                      :value="!hasLoadedOnce"
-                      color="failure"
-                      type="error"
-                      elevation="2"
-                      border="top"
-                      colored-border
-                    >{{ message }}</v-alert>
-                  </v-container>
-                </v-form>
-              </v-card-text>
-              <v-card-actions class="justify-center">
+  <v-content>
+    <!-- <v-row align="center" justify="center">
+        <v-col cols="12" sm="8" md="4">
+          <v-card class="elevation-4 pb-2">
+            <v-toolbar color="primary" dark flat>
+              <v-toolbar-title>Củ cải Store</v-toolbar-title>
+    </v-toolbar>-->
+    <!-- <v-card-text class="pa-0">
+              <v-row align="center" justify="center">
+                <v-col>
+                  <h2 class="text-center font-weight-regular">Đăng nhập với</h2>
+                </v-col>
+              </v-row>
+            </v-card-text>
+            <v-card-actions>
+              <v-row align="center" justify="center">
                 <v-btn
-                  color="primary"
-                  class="mt-0 text-capitalize"
-                  :loading="loading"
-                  :disabled="isProcess"
-                  @click="handleLogin"
-                >Đăng Nhập</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-      </v-row>-->
+                  large
+                  color="#283593"
+                  dark
+                  class="text-capitalize"
+                  max-height="350"
+                  :href="linkFacebook"
+                >
+                  <i class="fab fa-facebook mx-2" dark></i>Facebook
+                </v-btn>
+                <v-btn large class="text-capitalize" :href="linkGoogle">
+                  <i class="fab fa-google mx-2" dark></i>Google
+                </v-btn>
+              </v-row>
+    </v-card-actions>-->
+    <!-- <v-row align="center" justify="center" class="my-2">
+              <i class="far fa-heart mx-1" />
+              <i class="far fa-heart mx-1" />
+              <i class="far fa-heart mx-1" />
+    </v-row>-->
+    <!-- <v-card-text class="py-0 mt-3">
+              <v-form>
+                <v-container>
+                  <v-text-field
+                    label="Email"
+                    ref="email"
+                    v-model="email"
+                    prepend-icon="face"
+                    :rules="emailRules"
+                    type="email"
+                    required
+                  ></v-text-field>
 
-      <div class="main">
-        <section class="sign-in">
-          <div class="container">
-            <div class="signin-content">
-              <div class="signin-image">
-                <figure>
-                  <img src="~assets/images/signin-image.jpg" alt="sing up image" />
-                </figure>
-                <a @click="redirectRegister" class="signup-image-link">Tạo tài khoản</a>
-              </div>
-
-              <div class="signin-form">
-                <h2 class="form-title">Củ Cải Shop</h2>
-                <v-form id="login-form" :lazy-validation="lazy" ref="formLogin">
+                  <v-text-field
+                    label="Mật Khẩu"
+                    ref="password"
+                    v-model="password"
+                    prepend-icon="lock"
+                    :append-icon="hidePassword ? 'visibility' : 'visibility_off'"
+                    @click:append="hidePassword = !hidePassword"
+                    class="input-group--focused"
+                    :type="hidePassword ? 'text': 'password'"
+                    :rules="passwordRules"
+                    required
+                  ></v-text-field>
                   <v-alert
                     :value="!hasLoadedOnce"
-                    outlined
+                    color="failure"
                     type="error"
                     elevation="2"
                     border="top"
+                    colored-border
                   >{{ message }}</v-alert>
-                  <div class="form-group">
-                    <v-text-field
-                      label="Email"
-                      ref="email"
-                      v-model="email"
-                      prepend-icon="face"
-                      :rules="emailRules"
-                      type="email"
-                    ></v-text-field>
-                  </div>
-                  <div class="form-group">
-                    <v-text-field
-                      label="Mật Khẩu"
-                      ref="password"
-                      v-model="password"
-                      prepend-icon="lock"
-                      :rules="passwordRules"
-                      required
-                      :append-icon="hidePassword ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="hidePassword ? 'text' : 'password'"
-                      @click:append="hidePassword = !hidePassword"
-                    ></v-text-field>
-                  </div>
-                  <div class="form-group form-button">
-                    <v-btn
-                      color="primary"
-                      class="mt-0 text-capitalize"
-                      :loading="loading"
-                      :disabled="isProcess"
-                      @click="handleLogin"
-                    >Đăng Nhập</v-btn>
-                  </div>
-                </v-form>
-                <div class="social-login">
-                  <span class="social-label">Đăng nhập với</span>
-                  <ul class="socials" style="padding-left:0px">
-                    <li>
-                      <a href="#">
-                        <i class="display-flex-center zmdi zmdi-facebook d-flex"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="display-flex-center zmdi zmdi-google d-flex"></i>
-                      </a>
-                    </li>
-                  </ul>
+                </v-container>
+              </v-form>
+            </v-card-text>
+            <v-card-actions class="justify-center">
+              <v-btn
+                color="primary"
+                class="mt-0 text-capitalize"
+                :loading="loading"
+                :disabled="isProcess"
+                @click="handleLogin"
+              >Đăng Nhập</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+    </v-row>-->
+
+    <div class="main">
+      <section class="sign-in">
+        <div class="container">
+          <div class="signin-content">
+            <div class="signin-image">
+              <figure>
+                <img src="~assets/images/signin-image.jpg" alt="sing up image" />
+              </figure>
+              <a @click="redirectRegister" class="signup-image-link">Tạo tài khoản</a>
+            </div>
+
+            <div class="signin-form">
+              <h2 class="form-title">Củ Cải Shop</h2>
+              <v-form id="login-form" :lazy-validation="lazy" ref="formLogin">
+                <v-alert
+                  :value="!hasLoadedOnce"
+                  outlined
+                  type="error"
+                  elevation="2"
+                  border="top"
+                >{{ message }}</v-alert>
+                <div class="form-group">
+                  <v-text-field
+                    label="Email"
+                    ref="email"
+                    v-model="email"
+                    prepend-icon="face"
+                    :rules="emailRules"
+                    type="email"
+                  ></v-text-field>
                 </div>
+                <div class="form-group">
+                  <v-text-field
+                    label="Mật Khẩu"
+                    ref="password"
+                    v-model="password"
+                    prepend-icon="lock"
+                    :rules="passwordRules"
+                    required
+                    :append-icon="hidePassword ? 'mdi-eye' : 'mdi-eye-off'"
+                    :type="hidePassword ? 'text' : 'password'"
+                    @click:append="hidePassword = !hidePassword"
+                  ></v-text-field>
+                </div>
+                <div class="form-group form-button">
+                  <v-btn
+                    color="primary"
+                    class="mt-0 text-capitalize"
+                    :loading="loading"
+                    :disabled="isProcess"
+                    @click="handleLogin"
+                  >Đăng Nhập</v-btn>
+                </div>
+              </v-form>
+              <div class="social-login">
+                <span class="social-label">Đăng nhập với</span>
+                <ul class="socials" style="padding-left:0px">
+                  <li>
+                    <a href="#">
+                      <i class="display-flex-center zmdi zmdi-facebook d-flex"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="display-flex-center zmdi zmdi-google d-flex"></i>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-    </v-content>
-  </v-app>
+        </div>
+      </section>
+    </div>
+  </v-content>
 </template>
 
 

@@ -7,13 +7,14 @@ import dashboard from 'modules/dashboard/store';
 import CUCAI_STORES from './cucai-store';
 import Products from 'modules/products/store';
 import Auth from 'modules/oauth2redirect/store';
-
+import register from 'modules/register/store';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: { 
         global,
         login,
+        register,
         dashboard,
         Products,
         Auth
