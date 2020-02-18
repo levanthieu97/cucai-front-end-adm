@@ -10,7 +10,6 @@ import {
 
 import * as actions from './actions';
 import * as getters from './getters';
-import Menu from 'modules/dashboard/store/menus';
 import { ACCESS_TOKEN_KEY, USER, ROLE } from 'core/constant';
 
 const state = {
@@ -20,7 +19,6 @@ const state = {
     expired_at: Date.now(),
     expired_in: 3600,
     message: '',
-    menus: Menu,
     role: JSON.parse(localStorage.getItem(ROLE)),
 }
 
