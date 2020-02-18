@@ -27,34 +27,30 @@ export const logout = ({ commit }) => {
         commit(TYPES.AUTH_LOGOUT);
         localStorage.clear();
         Service.removeToken();
-        router.push('/login');
+        // router.go(-1);
         resolve()
     });
 }
 
 export const login = async ({ commit }, payload) => {
     let resp = await Service.post('/auth/sign-in', payload);
-
-    if (resp != null && resp.success) {
-        if (resp.data.role === "ROLE_USER") {
-            router.push('/login');
-        } else {
+    console.log(resp);
+    if (resp != null && resp.success) {      
             let expired_minutes = resp.data.expires_in;
             let expired_seconds = expired_minutes * 60;
 
             localStorage.setItem(CONSTANTS.ACCESS_TOKEN_KEY, resp.data.token);
-            localStorage.setItem(CONSTANTS.EXPIRES_AT, Date.now());
-            localStorage.setItem(CONSTANTS.EXPIRES_IN, expired_seconds);
+            // localStorage.setItem(CONSTANTS.EXPIRES_AT, Date.now());
+            // localStorage.setItem(CONSTANTS.EXPIRES_IN, expired_seconds);
             localStorage.setItem(CONSTANTS.USER, JSON.stringify(resp.data.user_info));
             Service.setToken(resp.data.token);
 
             commit(TYPES.SET_USER, resp.data.user_info); // commit gán/ thay đổi giá trị trong mutations;
             commit(TYPES.USER_ROLE, resp.data.role);
             authSuccess({ commit }, resp.data.token);
-            setExpires({ commit });
+            // setExpires({ commit });
 
             router.push('/');
-        }
     } else {
         localStorage.clear();
         Service.removeToken();

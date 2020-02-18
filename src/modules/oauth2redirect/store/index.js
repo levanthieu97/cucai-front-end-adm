@@ -8,11 +8,11 @@ const state = {
 };
 
 const mutations = {
-    [LOAD_PROFILE_SUCCESS]: (state, profile) => {
+    [LOAD_PROFILE_SUCCESS](state, profile){
         state.profile = profile;
     },
 
-    [LOAD_PROFILE_FAILURE]: (state, message) => {
+    [LOAD_PROFILE_FAILURE](state, message){
         state.profile = null;
         state.errorMessage = message;
     }

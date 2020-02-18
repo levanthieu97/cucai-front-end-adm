@@ -20,10 +20,11 @@ router.beforeEach(async (to, from, next) => {
   let isPathSocial = to.matched.some(p => p.path.indexOf('/oauth2/redirect') === 0);
   let { query: { token, error } } = to;
   if (isPathSocial) {
+    console.log("****************88");
     localStorage.setItem(CONSTANTS.ACCESS_TOKEN_KEY, token);
     Service.setToken(token);
-    store.dispatch('Auth/loadProfile')
-    next('/');
+    await store.dispatch('Auth/loadProfile');
+    return next('/');
   }
   next();
 })
@@ -33,41 +34,48 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start();
   // store.dispatch('global/setLoading', false);
 
-   let isLoginPage = to.matched.some(p => p.path.indexOf('/login') === 0);
-   let isRegisTer = to.matched.some(p => p.path.indexOf('/register') === 0);
-
+  let isLoginPage = to.matched.some(p => p.path.indexOf('/login') === 0);
+  let isRegisTer = to.matched.some(p => p.path.indexOf('/register') === 0);
+  let isDashboard = to.matched.some(p => p.path.indexOf('/dashboard') === 0);
 
   try {
-     let isAuthenticated = store.getters['login/isAuthenticated'];
-     let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    let isAuthenticated = store.getters['login/isAuthenticated'];
+    let isAuthSocial = store.getters['Auth/checkAuthSocial'];
+    let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-    // console.log("*******************&&&&&");
-    // console.log(oauth2Redirect);
-    // console.log(requiresAuth);
-    // console.log(isAuthenticated);
-    // to.matched.some(p => console.log(p));
-    //console.log(token);
 
-    // if(isRedirect){
-    //   console.log(isAuthenticated);
-    //   return next();
-    // }
-
-    if (!requiresAuth) {
-      if (isLoginPage && isAuthenticated) return next('/');
+    if(isDashboard && isAuthSocial){
       return next();
     }
 
+    console.log(isAuthSocial);
+    if (!requiresAuth) {
+      if ( isLoginPage && isAuthenticated ){ 
+        return next('/');
+      }
+      return next();
+    }
 
+    // if(isAuthenticatedSocial != null){
+    //   return next('/')
+    // }
 
     if (isRegisTer && !requiresAuth) {
       return next('/login');
     }
 
-    if (requiresAuth && !isAuthenticated) {
+
+
+  
+
+    // if(isAuthenticated || isAuthenticatedSocial){
+    //   console.log("zzzzzzzzzzzzzzzzzz")
+    //   return next('/');
+    // }
+   if ( requiresAuth && !isAuthenticated) {
       if (isLoginPage) return next();
-      return next('/login');
-    } else next();
+      return next('login');
+    }
   } catch (err) {
     if (isLoginPage) return next();
     next('login');
