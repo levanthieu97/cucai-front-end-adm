@@ -86,6 +86,8 @@ import Service from "core/service";
 import "assets/css/style.css";
 import "assets/fonts/material-icon/css/material-design-iconic-font.min.css";
 import "@mdi/font/css/materialdesignicons.css";
+import "assets/css/global.css";
+import "assets/css/custom.css";
 
 export default {
   data() {

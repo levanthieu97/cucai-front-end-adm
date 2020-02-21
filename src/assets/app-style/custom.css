@@ -1,0 +1,174 @@
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.35);  
+}
+
+.full_text_table {
+    white-space: nowrap;
+  }
+
+.no_box_shadow {
+    box-shadow: none !important;
+}
+
+.delimiter_row_bottom {
+    border-bottom: 1px solid #e8e8e8 !important;
+}
+
+.full_text_table {
+    white-space: nowrap;
+  }
+/********************************************************/
+/********************************************************/
+
+/********************************************************/
+/********************************************************/
+
+.my_style {
+    background-color: #222d32;
+}
+
+.my_style .v-list-group::before,
+.my_style .v-list-group::after {
+    background-color: unset !important;
+    height: 0 !important;
+}
+
+.my_style .v-list-group .v-list-group__header,
+.my_style .v-list-item {
+    border-left: 3px solid transparent; 
+}
+
+.my_style .v-list-item .v-list-item__action {
+    margin-right: 0px;
+}
+
+.my_style .v-list-item .v-list-item__icon {
+    margin-right: 0px;
+}
+ 
+.my_style .v-application--is-ltr .v-list-group--no-action .v-list-group__items .v-list-item {
+    padding-left: 56px;
+}
+
+.my_style .v-list-item > a {
+    height: 45px !important;
+}
+
+.ps .ps__rail-x ,.ps .ps__rail-y {
+    overflow: hidden;
+}
+
+.my_style .v-list-group .v-list-group__items {
+    background-color: #2c3b41;
+}
+
+.my_style .v-list-group .v-list-group__items a {
+    padding-left: 50px;
+}
+
+.my_style .v-list-group .v-list-group__items .sub_icon {
+    color: #b8c7ce !important;
+    margin-right: 10px;
+    font-size: 12px !important;
+    font-weight: bolder;
+}
+
+.my_style .v-list-group__header,
+.my_style .v-list-group .v-list-group__items i,
+.my_style .v-list-group .v-list-group__items .v-list-item__title,
+.my_style .v-list-item .v-list-item__title,
+.my_style .v-list-group__header i,
+.my_style .v-list-item .v-list-item__action i {
+    color: #b8c7ce;
+}
+
+
+.my_style .v-list-group__header i,
+.my_style .v-list-item .v-list-item__action i {
+    font-size: 20px; 
+}
+
+.my_style .v-list-item .v-list-item__action {
+    padding: 0 16px 0 0 !important;
+    min-width: unset !important;
+}
+
+.my_style .v-list-group__header__prepend-icon {
+    padding: 0 0 0 0px !important;
+    min-width: unset !important;
+}
+
+.my_style .v-list-item__title {
+    font-weight: 400;
+}
+
+.my_style .v-list-item.active,
+.my_style .v-list-item.active i,
+.my_style .v-list-item.active .v-list-item__title,
+.my_style .v-list-group.active .v-list-group__header,
+.my_style .v-list-group.active .v-list-group__header i {
+    color: white !important;
+    background-color: #1e282c;
+    border-left-color: #00695c !important;
+}
+
+.my_style .v-list-group.active .v-list-group__header .v-list-item__title,
+.my_style .v-list-group.active i,
+.my_style .v-list-group .v-list-group__items .v-list-item--active .sub_icon,
+.my_style .v-list-group .v-list-group__items .v-list-item--active .v-list-item__title {
+    color: white !important;
+}
+
+
+.my_style .v-list-group .v-list-group__items a:hover,
+.my_style .v-list-group .v-list-group__items a:hover .sub_icon,
+.my_style .v-list-group .v-list-group__items a:hover .v-list-item__title {
+    color: white !important;
+    background-color: unset !important;
+}
+
+.my_style .v-list-group .v-list-group__header:hover,
+.my_style .v-list-group .v-list-group__header:hover i,
+.my_style .v-list-group .v-list-group__header:hover .v-list-item__title,
+.my_style .v-list-item:hover i,
+.my_style .v-list-item a:hover,
+.my_style .v-list-item:hover .v-list-item__title,
+.my_style .v-list-group__header:hover {
+    color: white !important;
+    /* background-color: #1e282c !important; */
+    border-left-color: #1e282c;
+    transition: 0s;
+}
+
+.my_style .v-list-group .v-list-group__header--active i,
+.my_style .v-list-group .v-list-group__header--active .v-list-item__title,
+.my_style .v-list-group--active .v-list-group__header  {
+    color: white !important;
+    background-color: #1e282c !important;
+    border-left-color: #1e282c;
+}
+
+.full_box_table th,
+.full_box_table td {
+  border-right: 1px solid #0000001f;
+}
+.full_box_table th:last-child,
+.full_box_table td:last-child {
+  border-right: 0 !important;
+}

@@ -7,6 +7,8 @@ import router from './router';
 import store from './store';
 import Filters from 'core/filters';
 import { ACCESS_TOKEN_KEY, AUTH_HEADER_KEY } from 'core/constant';
+import colors from 'vuetify/es5/util/colors';
+
 
 import 'core/mixins';
 import './components/commons';
@@ -31,7 +33,7 @@ const theme = {
         failure: '#FF6B6B'
       },
       dark: {
-        primary: '#2196F3'
+        primary: '#00695c'
       },
     },
   },

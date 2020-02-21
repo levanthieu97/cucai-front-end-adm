@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app id="inspire">
     <template v-if="$route.meta.requiresAuth">
-      <nav-drawer class="app--drawer" />
+      <nav-drawer class="app--drawer"/>
       <tool-bar class="app--toolbar"/>
       <v-content class="content-page-wrapper">
         <div class="page-wrapper">
@@ -48,9 +48,9 @@ import AppEvents from "core/event";
 import { mapState, mapGetters, mapActions } from "vuex";
 import { NavDrawer, ToolBar } from "components/layout";
 
-import "assets/css/global.css";
-import "assets/css/custom.css";
+
 import "assets/scss/style.scss";
+import "assets/app-style/custom.css";
 
 export default {
   components: {

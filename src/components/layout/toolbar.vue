@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <v-toolbar class="custom-style" color="primary" fixed dark height="50">
-      <v-toolbar-title class="ml-0 pl-3">
-        <v-app-bar-nav-icon @click.stop="handleDrawerToggle" />
-      </v-toolbar-title>
-      <v-spacer />
-      <v-icon>person</v-icon>
-      <v-btn icon @click="handleLogoutClick()">
-        <v-icon>exit_to_app</v-icon>
-      </v-btn>
-    </v-toolbar>
-  </div>
+  <v-app-bar app color="primary" dark height="50">
+    <v-app-bar-nav-icon @click.stop="handleDrawerToggle" />
+    <v-toolbar-title>Application</v-toolbar-title>
+    <v-spacer />
+    <v-icon>person</v-icon>
+    <v-btn icon @click="handleLogoutClick()">
+      <v-icon>exit_to_app</v-icon>
+    </v-btn>
+  </v-app-bar>
 </template>
 <script>
 import _ from "lodash";
