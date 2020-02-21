@@ -63,7 +63,7 @@ const DEFAULT_ROUTES = [
             title: 'Trang chủ',
             requiresAuth: true,
         },
-        name: 'DashBoard',
+        name: 'Dashboard',
         component: () => import('modules/dashboard')
     },
     {
@@ -81,7 +81,29 @@ const DEFAULT_ROUTES = [
         },
         name: 'Register',
         component: () => import('modules/register')
-    }
+    },
+
+    {
+        path: '/pd',
+        meta: {
+          group: 'products',
+          title: 'Sản Phẩm'
+        },
+        name: 'ProductsMater',
+        redirect: {
+          path: '/pd/products'
+        }
+      },
+      {
+        path: '/pd/products',
+        meta: {
+          requiresAuth: true,
+          group: 'products',
+          title: 'Danh sách sản phẩm'
+        },
+        name: 'Products',
+        component: () => import('modules/products')
+      },
 ];
 
 const routes = [...DEFAULT_ROUTES];
