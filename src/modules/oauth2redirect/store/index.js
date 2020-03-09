@@ -1,9 +1,9 @@
 import * as actions from './actions';
 import * as getters from './getters';
-import { LOAD_PROFILE_SUCCESS, LOAD_PROFILE_FAILURE } from './types';
+import { LOAD_PROFILE_SUCCESS, LOAD_PROFILE_FAILURE,PROFILE } from './types';
 
 const state = {
-    profile: null,
+    profile: JSON.parse(localStorage.getItem(PROFILE)),
     errorMessage: null
 };
 

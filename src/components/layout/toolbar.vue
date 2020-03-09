@@ -1,8 +1,9 @@
 <template>
   <v-app-bar app color="primary" dark height="50">
     <v-app-bar-nav-icon @click.stop="handleDrawerToggle" />
-    <v-toolbar-title>Application</v-toolbar-title>
+    <!-- <v-toolbar-title>Application</v-toolbar-title> -->
     <v-spacer />
+    <span>{{this.myself}}</span>
     <v-icon>person</v-icon>
     <v-btn icon @click="handleLogoutClick()">
       <v-icon>exit_to_app</v-icon>
@@ -15,13 +16,23 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      sheet: false
+      sheet: false,
+      myself : null
     };
   },
 
   computed: {
     ...mapState("global", ["drawerToggled"]),
-    ...mapGetters("login", ["me"])
+    ...mapGetters("login", ["me"]),
+    ...mapGetters("Auth", ["profile"])
+  },
+
+  created() {
+    // this.loadProfile();
+    console.log(typeof this.me);
+    console.log(this.me);
+    console.log(this.profile);
+    (this.me === null) ? this.myself = this.profile.last_name : this.myself = this.me.full_name;
   },
 
   methods: {
@@ -35,6 +46,8 @@ export default {
     handleLogoutClick() {
       this.logout().then(() => this.$router.push({ path: "/login" }));
     }
+
+
   }
 };
 </script>
