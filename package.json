@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@chidoan/excel-utils": "^2.1.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "downloadjs": "^1.4.7",
     "loader-utils": "^1.2.3",
     "lodash": "^4.17.15",
